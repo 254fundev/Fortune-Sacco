@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortune Sacco</title>
+    <title>Chama Management System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Chama System</h1>
+        <h1>💰 Chama Management System</h1>
         
         <!-- Login Section -->
         <div id="loginSection" class="section">
@@ -23,18 +23,18 @@
 
         <!-- Admin Section -->
         <div id="adminSection" class="section hidden">
-            <h2>Admin Dashboard</h2>
+            <h2>👑 Admin Dashboard</h2>
             <button onclick="logout()" class="logout-btn">Logout</button>
             
             <div class="admin-panel">
-                <h3>Add New Member</h3>
+                <h3>➕ Add New Member</h3>
                 <input type="text" id="memberName" placeholder="Member Name">
                 <input type="password" id="memberPassword" placeholder="Password">
                 <button onclick="addMember()">Add Member</button>
             </div>
 
             <div class="admin-panel">
-                <h3>Add Contribution</h3>
+                <h3>💵 Add Contribution</h3>
                 <select id="contributionMember">
                     <option value="">Select Member</option>
                 </select>
@@ -44,7 +44,7 @@
             </div>
 
             <div class="admin-panel">
-                <h3>Add Loan</h3>
+                <h3>🏦 Add Loan</h3>
                 <select id="loanMember">
                     <option value="">Select Member</option>
                 </select>
@@ -56,12 +56,28 @@
             </div>
 
             <div class="admin-panel">
-                <h3>Add Loan Repayment</h3>
+                <h3>💳 Add Loan Repayment</h3>
                 <select id="repaymentLoan">
                     <option value="">Select Loan</option>
                 </select>
                 <input type="number" id="repaymentAmount" placeholder="Repayment Amount">
                 <button onclick="addRepayment()">Add Repayment</button>
+            </div>
+
+            <!-- Backup Section -->
+            <div class="admin-panel backup-panel">
+                <h3>💾 Data Backup & Restore</h3>
+                <button onclick="exportData()" class="export-btn">📥 Download Backup</button>
+                <button onclick="importData()" class="import-btn">📤 Restore from Backup</button>
+                <input type="file" id="importFile" accept=".json" style="display: none;">
+                <p class="note">Always download backups before making major changes!</p>
+            </div>
+
+            <!-- Danger Zone -->
+            <div class="admin-panel warning">
+                <h3>⚠️ Danger Zone</h3>
+                <button onclick="resetData()" class="danger-btn">🔄 Reset All Data</button>
+                <p class="warning-text">This will delete ALL members, contributions, and loans!</p>
             </div>
         </div>
 
@@ -71,7 +87,7 @@
             <button onclick="logout()" class="logout-btn">Logout</button>
             
             <div class="member-dashboard">
-                <h3>Contributions</h3>
+                <h3>📊 Contributions</h3>
                 <table id="contributionsTable">
                     <thead>
                         <tr>
@@ -83,12 +99,12 @@
                     <tfoot>
                         <tr>
                             <td><strong>Total</strong></td>
-                            <td id="totalContributions">0</td>
+                            <td id="totalContributions">$0</td>
                         </tr>
                     </tfoot>
                 </table>
 
-                <h3>Loans</h3>
+                <h3>📈 Loans</h3>
                 <table id="loansTable">
                     <thead>
                         <tr>
@@ -104,17 +120,29 @@
                     <tfoot>
                         <tr>
                             <td colspan="5"><strong>Total Balance</strong></td>
-                            <td id="totalLoanBalance">0</td>
+                            <td id="totalLoanBalance">$0</td>
                         </tr>
                     </tfoot>
                 </table>
 
-                <h3>Summary</h3>
+                <h3>📋 Summary</h3>
                 <div class="summary">
-                    <p>Total Contributions: <span id="summaryContributions">0</span></p>
-                    <p>Total Loans Taken: <span id="summaryLoans">0</span></p>
-                    <p>Outstanding Loan Balance: <span id="summaryBalance">0</span></p>
-                    <p>Net Position: <span id="netPosition">0</span></p>
+                    <div class="summary-card">
+                        <p>Total Contributions</p>
+                        <span id="summaryContributions">$0</span>
+                    </div>
+                    <div class="summary-card">
+                        <p>Total Loans Taken</p>
+                        <span id="summaryLoans">$0</span>
+                    </div>
+                    <div class="summary-card">
+                        <p>Outstanding Balance</p>
+                        <span id="summaryBalance">$0</span>
+                    </div>
+                    <div class="summary-card">
+                        <p>Net Position</p>
+                        <span id="netPosition">$0</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -122,4 +150,4 @@
 
     <script src="script.js"></script>
 </body>
-                              </html>
+</html>
